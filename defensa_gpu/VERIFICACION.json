@@ -1,0 +1,12 @@
+{
+  "comprobaciones": [
+    "Cinco modos y factores del enunciado",
+    "Rechazo de mascara incompatible",
+    "Nueva imagen con espacios, gris, dimensiones y recorte comun",
+    "Contrato de ejecucion PyCUDA: calentamiento, 5 CSV y cierre, con dispositivo simulado",
+    "Integracion real del host C++ con dispositivo simulado: PNG/CSV/f32/JSON",
+    "Serie de hilos y marca de estadistica insuficiente con una repeticion"
+  ],
+  "cuda_real": "No disponible: pendiente de compilar/probar en NVIDIA",
+  "nota": "Los dispositivos simulados solo verifican el host y no se entregan como backend ni resultados."
+}

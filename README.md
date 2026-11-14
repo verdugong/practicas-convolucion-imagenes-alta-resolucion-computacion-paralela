@@ -1,281 +1,289 @@
-# Practica 02 corregida: C++, CUDA C, Python secuencial y PyCUDA
+# Practica 2: convolucion de imagenes con CPU, CUDA C, Python y PyCUDA
 
-Este paquete contiene el codigo corregido, las tres entradas, pruebas, ejecucion
-reanudable, consolidacion de CSV y graficas. Conserva la evidencia del laboratorio
-del 10 de noviembre de 2026 en `evidencia_original/`, junto con el codigo que la produjo.
-No contiene informe academico ni presentacion, ni inventa mediciones GPU pendientes.
+Esta practica compara cuatro implementaciones de los mismos filtros de
+convolucion sobre imagenes de alta resolucion:
 
-## 1. Empezar en Windows / RTX 3070
+- CPU en C++.
+- GPU con CUDA C.
+- CPU secuencial en Python.
+- GPU con PyCUDA.
 
-Extraer en una carpeta NUEVA. No copiar carpetas build antiguas.
-Abrir **x64 Native Tools Command Prompt for VS 2022** y entrar a esta carpeta.
-Se requieren Python de 64 bits >=3.10, Visual Studio con C++, CUDA Toolkit,
-CMake >=3.24, una GPU NVIDIA y los paquetes de requirements.txt.
+El objetivo es medir tiempos de ejecucion, transferencias y aceleraciones sin
+confundir la preparacion de datos, la compilacion o la validacion con el tiempo
+del algoritmo.
 
-Si ya tienes el Python funcional del laboratorio, utilizarlo. Comprobar:
+## 1. Estructura
+
+| Ruta | Funcion |
+|---|---|
+| `CMakeLists.txt` | Compilacion C++17/CUDA y registro de pruebas CTest. |
+| `requirements.txt` | NumPy, Pillow, matplotlib, psutil y PyCUDA. |
+| `compilar_windows.bat` | Comprueba el entorno, compila y ejecuta las pruebas. |
+| `ejecutar_windows.bat` | Ejecuta una campana completa de medicion. |
+| `include/` | Declaraciones de imagenes, filtros, validacion y kernels CUDA. |
+| `src/main.cpp` | Ejecutable C++: filtros, mediciones, validacion y CSV. |
+| `src/cpu/` | Implementaciones secuenciales en C++. |
+| `src/gpu/` | Kernels y mediciones de CUDA C. |
+| `src/python/` | Implementaciones secuenciales en Python. |
+| `src/pycuda/` | Kernels y clases para ejecutar los filtros con PyCUDA. |
+| `scripts/compilar.py` | Configura y compila el proyecto C++/CUDA. |
+| `scripts/experimentos.py` | Ejecuta las configuraciones y guarda el estado. |
+| `scripts/graficar.py` | Consolida CSV, calcula aceleraciones y genera figuras. |
+| `scripts/convertir_entradas.py` | Prepara las imagenes en formato PGM. |
+| `scripts/pycuda_filtros.py` | Comprueba o ejecuta directamente los filtros PyCUDA. |
+| `scripts/comparar_imagenes.py` | Genera comparativos visuales de las salidas. |
+| `tests/` | Pruebas CPU, GPU, pipeline y equivalencia con PyCUDA. |
+| `data/originales/` | Imagenes originales; no se publican automaticamente. |
+| `data/preparadas/` | Entradas PGM y metadatos de preparacion. |
+| `results/` | CSV, metadatos y figuras de los experimentos hechos. |
+| `defensa_gpu/` | Comprobacion auxiliar de un caso individual en GPU para la exposición. |
+| `build/` | Archivos de compilacion local; se excluye de Git. |
+
+## 2. Compilar y comprobar
+
+Entorno previsto: Windows x64, Visual Studio 2022 C++, CUDA Toolkit, CMake
+>=3.24, Python de 64 bits >=3.10 y una GPU NVIDIA. La configuracion utilizada
+para las mediciones principales es una RTX 3070, arquitectura CUDA 86.
+
+Abrir **x64 Native Tools Command Prompt for VS 2022**, entrar en la carpeta con
+`CMakeLists.txt` e instalar las dependencias:
 
 ```bat
-where python
-where cl
-where nvcc
-where cmake
 python -m pip install -r requirements.txt
+```
+
+Para compilar y ejecutar todas las pruebas:
+
+```bat
 compilar_windows.bat
 ```
 
-El script compila en Release para arquitectura 86 (RTX 3070) y ejecuta **cinco pruebas
-CTest**: CPU C++, CPU Python, regresiones del pipeline, CPU/CUDA C y las cuatro
-versiones mediante PyCUDA. El registro queda en `verificacion_gpu_laboratorio.txt`.
-La prueba de pipeline contiene pruebas internas; sus fixtures temporales no se
-incorporan como resultados de laboratorio.
+El script comprueba `cl`, `nvcc`, Python y PyCUDA, compila el ejecutable
+`build\practica1.exe` y ejecuta CTest. Con CUDA y Python disponibles se validan:
 
-Si prefieres un entorno virtual nuevo, antes de instalar:
+1. Referencia CPU en C++.
+2. Referencia CPU en Python.
+3. Regresiones del pipeline.
+4. Equivalencia CPU-GPU con CUDA C.
+5. Equivalencia CPU-GPU con PyCUDA.
 
-```bat
-py -m venv .venv
-.venv\Scripts\activate
-```
-
-PyCUDA puede requerir compilacion durante pip install; ejecutar desde la terminal
-de Visual Studio con nvcc disponible. Si falla una dependencia o prueba, conservar
-el error y resolverlo antes de tomar tiempos. No sustituir PyCUDA por NumPy.
-
-Las entradas PGM ya estan incluidas: **no ejecutar de nuevo el conversor sobre la
-misma carpeta**. No se redimensionaron los originales en la correccion.
-
-## 2. Ejecutar una campana nueva
+El registro queda en `verificacion_gpu_laboratorio.txt`. Si solo se necesita
+comprobar la referencia CPU en un equipo sin CUDA:
 
 ```bat
-python scripts\experimentos.py --exe build\practica1.exe --data data\preparadas --out results\campana_final --reps 5 --python-max-segundos 120
+python scripts\compilar.py --cpu-only
+ctest --test-dir build -C Release --output-on-failure
 ```
 
-Alternativa equivalente con carpeta automatica fechada:
+Esta comprobacion CPU no sustituye la validacion final de CUDA y PyCUDA.
+
+## 3. Preparar las entradas
+
+La practica utiliza una misma imagen y encuadre en tres resoluciones:
+
+- `imagen_2000.pgm`: 2000 x 2000 pixeles.
+- `imagen_4000.pgm`: 4000 x 4000 pixeles.
+- `imagen_6000.pgm`: 6000 x 6000 pixeles.
+
+Las entradas PGM preparadas ya se encuentran en `data/preparadas/`. No ejecutar
+de nuevo el conversor sobre esa misma carpeta porque no sobrescribe resultados
+existentes. Para preparar otra copia:
+
+```bat
+python scripts\convertir_entradas.py ^
+  --img2000 "data\originales\foto_2000.jpg" ^
+  --img4000 "data\originales\foto_4000.jpg" ^
+  --img6000 "data\originales\foto_6000.jpg" ^
+  --out data\preparadas_nueva
+```
+
+El conversor verifica dimensiones, corrige orientacion EXIF, convierte a escala
+de grises de 8 bits, genera PGM binario P5 y registra hashes SHA-256 en
+`entradas.json`. No redimensiona ni recorta durante la conversion. La
+procedencia de la imagen se documenta en `data/README.md`.
+
+## 4. Prueba rapida y experimentos
+
+Para comprobar directamente PyCUDA en la GPU:
+
+```bat
+python scripts\pycuda_filtros.py --check
+```
+
+Para ejecutar una campana reproducible con cinco repeticiones:
+
+```bat
+python scripts\experimentos.py ^
+  --exe build\practica1.exe ^
+  --data data\preparadas ^
+  --out results\campana_final ^
+  --reps 5 ^
+  --python-max-segundos 120
+```
+
+Tambien se puede usar:
 
 ```bat
 ejecutar_windows.bat
 ```
 
-Orden de ejecucion, siempre sin concurrencia:
+La campana ejecuta CUDA C y PyCUDA para las configuraciones principales,
+configuraciones adicionales con bloques de 512 hilos y Python secuencial en
+los casos que el tiempo de laboratorio permite.
 
-1. C++/CUDA C y PyCUDA de las nueve configuraciones obligatorias.
-2. C++/CUDA C y PyCUDA de cinco configuraciones adicionales a 512x512.
-3. Python secuencial completo de esas cinco configuraciones pequenas.
-4. Python secuencial de las siete configuraciones grandes que lo requieren.
+| Experimento | Variable | Condiciones principales |
+|---|---|---|
+| Filtros | Media, nitidez y laplaciano | 4000x4000, mascara 3, 256 hilos |
+| Resolucion | 2000, 4000 y 6000 pixeles | Media, mascara 9, 256 hilos |
+| Mascara | 3, 9 y 21 | Media, 4000x4000, 256 hilos |
+| Hilos | 128, 256 y 512 | Media, 4000x4000, mascara 9 |
 
-Las pruebas de hilos de 128 y 512 solo requieren CUDA C y PyCUDA. El ejecutable C++
-produce ademas su referencia CPU para validar; esa referencia auxiliar se conserva,
-pero no se repite Python ni se incluye CPU en la grafica de hilos.
-
-El presupuesto predeterminado de 120 s se aplica **por proceso Python grande**, e
-incluye arranque, preparacion, piloto, calentamiento y repeticiones. Es una decision
-operativa explicita de tiempo de laboratorio, no un resultado del algoritmo. Ajustarlo
-al tiempo realmente disponible. No impone limite a la comparacion pequena comun.
-
-Antes de cada configuracion Python se mide una muestra de hasta 64x64 y se imprime
-una ESTIMACION de viabilidad. Nunca se incorpora como tiempo medido de la imagen
-grande. El proceso intenta realmente la configuracion grande hasta terminar o alcanzar
-su presupuesto. Se guardan tiempo transcurrido, fase, motivo y repeticiones completas.
-
-Si no completa, queda `no_completada`; no se calcula su aceleracion. La comparacion
-alternativa de cuatro versiones a la misma resolucion conserva filtro y mascara, y
-las pruebas GPU grandes permanecen disponibles. `cobertura.json` verifica esta
-alternativa segun el enunciado; no certifica procedencia, informe, GitHub o defensa.
-
-Para no limitar Python (puede necesitar horas):
+Las configuraciones con Python pueden tardar considerablemente mas. El limite
+predeterminado de 120 segundos se aplica por proceso Python grande. Para no
+limitar estas mediciones:
 
 ```bat
 ejecutar_windows.bat --python-max-segundos 0
 ```
 
-La entrada adicional se obtiene desde imagen_4000.pgm con Pillow LANCZOS. Se registra
-su hash y metodo. No reemplaza las tres imagenes obligatorias. Se puede cambiar el
-lado al iniciar: `--alternativa-lado 256` (rango 64..1000).
-
-## 3. Interrumpir y reanudar
-
-Usar **Ctrl+C una vez** y esperar a que se guarde el estado y se consoliden las tablas.
-Si el motivo sera fin de clase, se puede declarar al iniciar:
-`--motivo-interrupcion "Fin del horario de laboratorio"`.
+Para detener y reanudar una campana, usar directamente:
 
 ```bat
-reanudar_windows.bat results\campana_final
+python scripts\experimentos.py ^
+  --exe build\practica1.exe ^
+  --data data\preparadas ^
+  --resume results\campana_final
 ```
 
-O directamente:
+Una configuracion que no termina queda marcada como `no_completada` y no se usa
+para calcular aceleraciones. No se deben completar resultados manualmente.
 
-```bat
-python scripts\experimentos.py --exe build\practica1.exe --data data\preparadas --resume results\campana_final
-```
+## 5. Salidas
 
-La reanudacion verifica codigo, ejecutable, entradas, equipo, GPU/controlador y
-versiones. Tambien verifica hashes de los archivos de las etapas completas. No
-mezcla datos si cambian esas condiciones. Las etapas completas se omiten. Python
-reanuda las repeticiones completas de su CSV y vuelve a calentar; CUDA reinicia una
-etapa interrumpida en otro prefijo, preservando el intento previo.
+Cada campana genera una carpeta dentro de `results` con archivos como estos:
 
-Los casos que agotaron su presupuesto no se reintentan automaticamente. Para
-retomarlos con mas tiempo:
+- `experimentos.json`: plan, entradas, hashes, equipo y sesiones.
+- `mediciones.csv`: filas disponibles de todas las implementaciones.
+- `resumen.csv`: medianas, cuartiles, IQR y aceleraciones validas.
+- `estado_configuraciones.csv`: repeticiones, limites y motivos de cada caso.
+- `*_raw.csv`: mediciones originales de CPU, CUDA C, Python o PyCUDA.
+- `*_metadata.txt`: entorno, configuracion y mediciones de CUDA C.
+- `*_python_estado.json`: piloto, calentamiento, limite e interrupciones.
+- `*_pycuda_preparacion.json`: contexto y compilacion de kernels PyCUDA.
+- `*_pycuda_reservas.json`: reservas previas al cronometro.
+- `figuras/`: tiempos, aceleraciones, transferencias y comparativos visuales.
 
-```bat
-python scripts\experimentos.py --exe build\practica1.exe --data data\preparadas --resume results\campana_final --reintentar-python --python-max-segundos 1800
-```
-
-Si una repeticion individual necesita mas que el presupuesto, aumentar el limite;
-no se puede reanudar a mitad de una convolucion. Una etapa fallida por error de
-validacion requiere diagnostico; no se oculta como limitacion de tiempo.
-
-Una terminacion abrupta del sistema puede impedir el ultimo registro de estado.
-Los CSV completos escritos se conservan; el siguiente --resume trata la etapa
-`en_curso` como interrumpida. No desconectar el equipo durante la escritura.
-
-## 4. Resultados y alcance de medicion
-
-| Archivo | Contenido |
-|---|---|
-| experimentos.json | Plan, hashes, entorno, sesiones, comandos e intentos por etapa. |
-| mediciones/*/*_raw.csv | Repeticiones originales C++/CUDA C. |
-| *_python_raw.csv / *_pycuda_raw.csv | Repeticiones Python/PyCUDA, errores y estado. |
-| *_python_estado.json | Piloto, estimaciones, calentamiento, interrupcion y sesiones. |
-| *_pycuda_preparacion.json | Inicializacion/contexto y compilacion/carga, separados. |
-| *_pycuda_reservas.json | Reservas previas, excluidas del total GPU. |
-| *_metadata.txt | Entorno C++, contexto runtime, reservas y aceleracion C++/CUDA C. |
-| build/compilacion.json | Tiempo de configuracion y build C++/CUDA anticipado. |
-| mediciones.csv | Filas disponibles; distingue estado de fila y de configuracion. |
-| resumen.csv | Medianas, Q1, Q3, IQR y aceleraciones SOLO de series completas. |
-| estado_configuraciones.csv | Estado, numero de repeticiones, limite y motivo. |
-| cobertura.json | Pendientes y uso de alternativa documentada de Python. |
-| figuras/ | Tiempos, aceleraciones, transferencias y comparativos visuales. |
-| *.f32 | Referencias float32 con signo; conservadas para reanudar/validar. |
-
-Dejar al menos **3 GB libres** para una campana y margen adicional para intentos.
-Las referencias sin compresion y las imagenes ocupan bastante mas que el ZIP.
-
-CPU: solo convolucion. C++ usa steady_clock y Python perf_counter; las salidas se
-reservan y los coeficientes se preparan antes del cronometro. Validacion y archivos
-quedan fuera. Un calentamiento completo precede a las cinco repeticiones.
-
-GPU: kernel con eventos CUDA sincronizados. H2D y D2H con reloj host, y total desde
-el inicio de H2D hasta terminar D2H. El total incluye lanzamiento, instrumentacion y
-sincronizacion, pero no reservas, contexto, compilacion, validacion ni archivos.
-Host pageable en ambas versiones GPU, sin solapamiento. Por ello total puede ser
-mayor que H2D + kernel + D2H. Compilacion de CUDA C es anticipada (build); PyCUDA
-registra compilacion/carga de SourceModule, con posible uso de su cache. Cualquier
-carga diferida del runtime C++ se amortiza mediante calentamiento; no se atribuye
-un tiempo ficticio aislado a ella.
-
-Las ejecuciones de C++/CUDA C alternan orden por repeticion; las implementaciones
-Python se ejecutan despues, en procesos distintos. Comparar medianas, no restar
-repeticiones como si fueran simultaneas. Frecuencias, temperatura, WDDM y carga del
-laboratorio pueden afectar diferencias pequenas. Conservar valores extremos.
-
-Para regenerar tablas y figuras sin medir:
+Para regenerar tablas y figuras sin ejecutar otra campana:
 
 ```bat
 python scripts\graficar.py results\campana_final
 ```
 
-## 5. Aceleracion y eficiencia
+Las referencias `.f32`, imagenes intermedias y salidas PGM pueden ocupar varios
+gigabytes. Se conservan para validar o reanudar localmente, pero se excluyen
+segun las reglas de `.gitignore` cuando no son necesarias para la entrega.
 
-El calculo principal esta en **scripts/graficar.py, funcion calcular_aceleraciones**.
-Usa cocientes de medianas completas y validadas, con la misma entrada/filtro/mascara:
+## 6. Algoritmos y validacion
 
-- CUDA C kernel: mediana(C++) / mediana(kernel CUDA C).
-- CUDA C total: mediana(C++) / mediana(total CUDA C).
-- PyCUDA kernel: mediana(Python) / mediana(kernel PyCUDA).
-- PyCUDA total: mediana(Python) / mediana(total PyCUDA).
+Las cuatro implementaciones aplican los mismos filtros:
 
-Columnas: `referencia_aceleracion`, `aceleracion_kernel`, `aceleracion_total`.
-Tambien se calcula CUDA C / PyCUDA para kernel y total; un cociente mayor que uno
-significa que PyCUDA tuvo menor tiempo en esa comparacion. Las bases de las dos
-aceleraciones son distintas: un mayor speedup de PyCUDA no implica que su kernel
-sea mejor que CUDA C. Para eso comparar tiempos GPU directamente.
+| Filtro | Coeficientes | Efecto |
+|---|---|---|
+| Media k x k | Todos `1/(k*k)` | Suaviza y reduce detalle. |
+| Nitidez 3 x 3 | `[0,-1,0; -1,5,-1; 0,-1,0]` | Realza cambios locales. |
+| Laplaciano 3 x 3 | `[0,1,0; 1,-4,1; 0,1,0]` | Detecta cambios de intensidad. |
 
-En **src/main.cpp** tambien se calcula C++/CUDA C, despues de las repeticiones, para
-el archivo *_metadata.txt. No es un segundo calculo de Python/PyCUDA.
+En las versiones GPU se utiliza un hilo por pixel, bloques de hilos en X,
+memoria global y arreglos separados de entrada y salida. Los limites de la
+imagen se tratan como ceros y la media mantiene el divisor completo en los
+bordes. La entrada original se usa como origen independiente para cada filtro.
 
-La eficiencia paralela clasica E(p)=S(p)/p requiere p unidades comparables y una
-referencia serial apropiada. En esta comparacion CPU-GPU heterogenea no se identifica
-ese p de manera valida. **No dividir por 128/256/512 hilos por bloque, por el total de
-hilos lanzados ni por los CUDA cores.** Cambiar el bloque no cambia el numero de GPU
-ni de SM disponibles. El enunciado no exige esa eficiencia. El campo queda vacio con
-el motivo indicado. Tampoco se infiere ocupacion, eficiencia energetica o uso de GPU
-solo a partir de tiempos.
+PyCUDA construye los kernels CUDA desde cadenas de codigo mediante
+`SourceModule`. La compilacion del kernel y la reserva de memoria se realizan
+antes de medir la ejecucion principal. Los kernels usan `float32`, desactivan
+FMA y no utilizan `fast-math`, para facilitar la comparacion con CUDA C y Python.
 
-Se reportan proporciones descriptivas (H2D+D2H)/total y kernel/total; NO se llaman
-eficiencia paralela. Ver `ACELERACION_Y_EFICIENCIA.md`.
+Las pruebas comparan las salidas antes de visualizarlas:
 
-## 6. Filtros y validacion
+- Error maximo y error medio en `float64`.
+- Tolerancia absoluta de `0.001` unidades de intensidad.
+- Rechazo de valores NaN o infinitos.
+- Casos 1x1, 3x3, 17x19, impulsos y resoluciones grandes.
 
-C++ secuencial en src/cpu; Python por clases en src/python; CUDA C en src/gpu;
-PyCUDA por clases/kernels en src/pycuda. Los scripts coordinan lectura y medicion.
+La visualizacion redondea y satura media y nitidez a `[0,255]`. El laplaciano
+visualiza el valor absoluto saturado; las salidas float originales conservan el
+signo y se validan antes de esa transformacion.
 
-- Media: k=3,9,21; coeficiente float32 1/(k*k), divisor fijo en bordes.
-- Nitidez: [0,-1,0; -1,5,-1; 0,-1,0].
-- Laplaciano: [0,1,0; 1,-4,1; 0,1,0].
-- Un pixel por hilo GPU; bloques/hilos exclusivamente X, vecinos en memoria global.
-- indice=blockIdx.x*blockDim.x+threadIdx.x; fila=indice/ancho, columna=indice%ancho.
-- Entrada/salida separadas; limite indice<N y vecinos dentro de imagen.
-- Datos y acumulacion float32, arrays NumPy contiguos C; anchos/altos/k np.int32.
-- FMA deshabilitada en ambos kernels CUDA, sin fast-math.
-- Errores maximo y medio calculados en float64 ANTES de abs/clip/redondeo visual.
-- Tolerancia absoluta 0.001 intensidad: umbral practico de concordancia float32 muy
-  inferior a un nivel de gris, no cota universal respecto a aritmetica exacta.
-  Orden de acumulacion equivalente y FMA deshabilitada reducen discrepancias. Con
-  entradas enteras nitidez/laplaciano tienen operaciones exactamente representables
-  en este rango. No aumentar la tolerancia para ocultar errores; NaN/Inf invalidan.
-- Visual: media/nitidez clip 0..255 y redondeo; laplaciano abs, clip y redondeo.
+## 7. Metodologia de medicion
 
-Matriz manual [1,2,3;4,5,6;7,8,9]:
-media [12,21,16;27,45,33;24,39,28]/9;
-nitidez [-1,1,7;7,5,13;23,19,31];
-laplaciano [2,1,-4;-3,0,-7;-16,-11,-22].
-Se prueban 1x1, 3x3, 17x19 (323 pixeles, no multiplo de 128/256/512), impulsos
-con negativos y valores >255, y rectangulos adicionales C++/Python.
+Cada configuracion realiza un calentamiento y despues cinco repeticiones, salvo
+que se indique otro valor con `--reps`. Las reservas, la compilacion, la
+validacion y la escritura de archivos quedan fuera del tiempo del algoritmo.
 
-## 7. Evidencia anterior, versionado y pendientes reales
+- CPU C++: `steady_clock`.
+- CPU Python: `perf_counter`.
+- Kernel CUDA C y PyCUDA: eventos CUDA.
+- Transferencias H2D y D2H: reloj del host.
+- GPU total: desde H2D hasta finalizar D2H.
 
-`evidencia_original/` no se modifica: contiene los CSV, imagenes, referencias .f32,
-manifest original, codigo previo y registro de pruebas reales del laboratorio.
-Su manifest seguia en curso; se conserva tal cual por trazabilidad.
+El tiempo total GPU incluye lanzamiento, instrumentacion y sincronizacion, por lo
+que puede ser mayor que la suma aislada de H2D, kernel y D2H. Las ejecuciones
+Python se realizan en procesos separados de las ejecuciones CUDA C y PyCUDA.
 
-`revision_resultados_originales/` contiene la consolidacion corregida de ESA evidencia:
-cuatro configuraciones de cuatro versiones y C++/CUDA C completos de la quinta.
-La unica repeticion Python de la quinta se conserva, sin speedup ni estadistica de
-configuracion completa. Estos tiempos no pertenecen a la version nueva de Python,
-que ahora prepara memoria/coeficientes fuera del cronometro.
+Las aceleraciones se calculan con medianas de series completas:
 
-Para reconstruir esa revision sin cambiar originales:
+- CUDA C: CPU C++ / CUDA C.
+- PyCUDA: Python / PyCUDA.
+- Comparacion directa adicional: CUDA C / PyCUDA.
 
-```bat
-python scripts\graficar.py evidencia_original\results\experimentos_20261110_152824 --out revision_resultados_originales
-```
+No se divide por 128, 256 o 512 para afirmar una eficiencia paralela: esos son
+tamanos de bloque, no el numero de GPU ni de unidades de ejecucion comparables.
+Las proporciones de transferencias y kernel se reportan como medidas descriptivas,
+no como eficiencia paralela clasica.
 
-El snapshot original identifica archivos y hashes, pero no puede recuperar el commit
-original de practica 01: el laboratorio devolvio `not a git repository`. El archivo
-`VERSION_CODIGO.json` identifica el commit local del codigo corregido; el bundle
-incluye ese historial para poder publicarlo sin perder su identidad:
+## 8. GitHub y entrega
+
+Versionar el codigo fuente, README, pruebas, configuraciones, CSV resumidos,
+metadatos necesarios y figuras finales. Mantener fuera del repositorio:
+
+- `build/` y ejecutables.
+- `__pycache__/` y archivos `.pyc`.
+- Imagenes originales grandes si no son necesarias.
+- Referencias `.f32` y PGM generadas dentro de `results`.
+- Archivos temporales, bundles y logs locales.
+
+Las conclusiones deben obtenerse de las mediciones reales del equipo. El paquete
+incluye herramientas y evidencia de laboratorio, pero no sustituye el informe
+academico ni la presentacion solicitados por el enunciado.
+
+Antes de entregar:
 
 ```bat
-git clone codigo_practica02.bundle repositorio_practica02
+git rev-parse HEAD
+git status
 ```
 
-Ese repositorio de codigo referencia las entradas del paquete y sus hashes. Copiar
-los datos del ZIP a su carpeta data si se ejecuta desde el clone. Agregar el remoto
-GitHub propio y publicar ese commit; registrar tambien el commit real de practica 01.
-No se inventa un enlace GitHub ni autoria/origen de las imagenes. Completar los datos
-que solo los integrantes conocen en data/README.md y conservar entradas.json.
-`requirements-laboratorio-20261110.txt` guarda las versiones exactas anteriores;
-la nueva campana registra de nuevo su entorno y pip freeze.
+Revisar tambien que no se hayan incluido credenciales, archivos generados o
+resultados de otra maquina.
 
-La correccion fue verificada sin GPU: compilacion C++, pruebas CPU, equivalencia
-C++/Python y regresiones de medicion/reanudacion/estadisticas. Los kernels conservan
-las operaciones originales, pero la compilacion y ejecucion CUDA del paquete nuevo
-deben verificarse en el laboratorio con compilar_windows.bat. Los logs previos son
-evidencia de la version anterior, no certificacion del paquete corregido.
+## 9. Verificacion y referencias
 
-## Referencias tecnicas
+La referencia CPU, el pipeline y las comparaciones de resultados se pueden
+comprobar sin modificar las mediciones:
 
-- Enunciado adjunto de practica 02, especialmente viabilidad Python y medicion.
+```bat
+compilar_windows.bat
+ctest --test-dir build -C Release --output-on-failure
+```
+
+La validacion CUDA C y PyCUDA requiere una GPU NVIDIA, CUDA Toolkit, un
+controlador compatible y PyCUDA instalado en el mismo Python utilizado por CTest.
+Los tiempos dependen de la GPU, temperatura, frecuencia, controlador y carga del
+equipo; no deben interpretarse como valores universales.
+
+Referencias tecnicas:
+
+- Enunciado de la practica 2.
 - https://documen.tician.de/pycuda/driver.html
 - https://documen.tician.de/pycuda/tutorial.html
 - https://docs.nvidia.com/cuda/archive/12.9.1/cuda-c-best-practices-guide/index.html

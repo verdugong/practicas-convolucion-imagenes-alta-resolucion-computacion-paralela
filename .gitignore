@@ -11,10 +11,13 @@ __pycache__/
 *.ilk
 *.exp
 *.lib
-defensa_gpu/
+defensa_gpu/bin
+defensa_gpu/*.bat
+defensa_gpu/*.md
 data/originales/*
 !data/originales/.gitkeep
 results/**/*.pgm
 results/**/*.f32
+results/defensa_gpu
 *.bundle
 imagenprueba.jpg
