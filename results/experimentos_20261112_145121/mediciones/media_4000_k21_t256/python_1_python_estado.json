@@ -1,0 +1,26 @@
+{
+  "estado": "no_completada",
+  "inicio_utc": "2026-11-12T21:20:27.800849+00:00",
+  "filtro": "media",
+  "mascara": 21,
+  "forma": [
+    4000,
+    4000
+  ],
+  "repeticiones_objetivo": 5,
+  "repeticiones_completas": 0,
+  "fase": "calentamiento",
+  "alcance_cpu": "solo aplicar: recorridos y acumulacion float32; salida y mascara preasignadas",
+  "fase_inicio_utc": "2026-11-12T21:20:28.065945+00:00",
+  "piloto": {
+    "pixeles": 4096,
+    "tiempo_s": 0.2641538999999966,
+    "estimacion_por_repeticion_s": 1031.8511718749867,
+    "estimacion_sesion_s": 6191.10703124992,
+    "advertencia": "ESTIMACION, no medicion de imagen completa; bordes/caches afectan"
+  },
+  "motivo": "interrupcion recibida; consultar motivo del coordinador",
+  "fase_incompleta_transcurrido_s": 119.57392750000008,
+  "sesion_transcurrido_s": 119.83901060000005,
+  "fin_utc": "2026-11-12T21:22:27.639886+00:00"
+}

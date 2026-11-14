@@ -1,0 +1,6 @@
+implementacion,filtro,ancho,alto,mascara,hilos,bloques,repeticion,cpu_ms,h2d_ms,kernel_ms,d2h_ms,total_ms,error_max,error_medio,tolerancia,validado,unidad,error_cuda_max,error_cuda_medio,validado_cuda,estado
+PYTHON,media,4000,4000,9,0,0,1,238979.76210000343,,,,238979.76210000343,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,media,4000,4000,9,0,0,2,239446.5893000015,,,,239446.5893000015,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,media,4000,4000,9,0,0,3,239161.93719999865,,,,239161.93719999865,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,media,4000,4000,9,0,0,4,239134.5857999986,,,,239134.5857999986,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,media,4000,4000,9,0,0,5,239302.5498999923,,,,239302.5498999923,0.0,0.0,0.001,true,ms,,,,completada

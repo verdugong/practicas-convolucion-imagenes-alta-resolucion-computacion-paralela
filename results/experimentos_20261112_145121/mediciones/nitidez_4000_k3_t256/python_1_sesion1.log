@@ -1,0 +1,7 @@
+Piloto: 0.010 s. ESTIMACION por imagen: 39.2 s; sesion restante: 235.2 s.
+Python: calentamiento completo en curso (no cuenta como repeticion).
+Python 1/5: 41118.263800 ms, error CPU=0.0
+Python 2/5: 41264.186100 ms, error CPU=0.0
+Python 3/5: 41431.613500 ms, error CPU=0.0
+Python 4/5: 41326.853000 ms, error CPU=0.0
+Python 5/5: 41378.328200 ms, error CPU=0.0

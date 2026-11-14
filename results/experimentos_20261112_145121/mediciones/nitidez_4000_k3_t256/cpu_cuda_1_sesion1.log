@@ -1,0 +1,26 @@
+GPU: NVIDIA GeForce RTX 3070
+VRAM total MiB: 8191.5
+Compute capability: 8.6
+CUDA runtime: 12090
+CUDA driver API: 13000
+Compilador NVCC: 12.9.86
+Inicializacion contexto runtime ms: 62.0371
+Reservas y eventos ms: 0.1879
+Compilacion CUDA C: anticipada en build; carga diferida amortizada en calentamiento
+Hilos por bloque: 256
+Bloques en X: 62500
+Filtro: nitidez 3x3
+Imagen: 4000x4000
+Repeticion 1: CPU=72.439 ms, kernel=0.363072 ms, error max=0
+Repeticion 2: CPU=72.4738 ms, kernel=0.361632 ms, error max=0
+Repeticion 3: CPU=72.0473 ms, kernel=0.447648 ms, error max=0
+Repeticion 4: CPU=72.5369 ms, kernel=0.359104 ms, error max=0
+Repeticion 5: CPU=75.6363 ms, kernel=0.451904 ms, error max=0
+cpu: mediana=72.4738 ms, IQR=0.0979
+h2d: mediana=7.2877 ms, IQR=0.0891
+kernel: mediana=0.363072 ms, IQR=0.086016
+d2h: mediana=7.1156 ms, IQR=0.1023
+total_gpu: mediana=14.8845 ms, IQR=0.9877
+proporcion_transferencias: mediana=97.4713 porcentaje, IQR=0.371212
+VALIDACION CPU-GPU CORRECTA
+Resultados guardados con prefijo: C:\Users\Oficina\Desktop\Practica2_C_CudaC_Py_PyCUDA\Practica2\results\campana_20261112_145121\mediciones\nitidez_4000_k3_t256\cpu_cuda_1

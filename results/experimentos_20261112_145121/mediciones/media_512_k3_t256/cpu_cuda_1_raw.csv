@@ -1,0 +1,11 @@
+implementacion,filtro,ancho,alto,mascara,hilos,bloques,repeticion,cpu_ms,h2d_ms,kernel_ms,d2h_ms,total_ms,error_max,error_medio,tolerancia,validado,unidad,estado
+CPU,media,512,512,3,0,0,1,1.8824,,,,1.8824,,,,,ms,completada
+CUDA,media,512,512,3,256,1024,1,,0.1134,0.0190399996936,0.1389,0.2807,0,0,0.001,true,ms,completada
+CPU,media,512,512,3,0,0,2,1.9601,,,,1.9601,,,,,ms,completada
+CUDA,media,512,512,3,256,1024,2,,0.2004,0.0352640002966,0.1793,0.4298,0,0,0.001,true,ms,completada
+CPU,media,512,512,3,0,0,3,1.908,,,,1.908,,,,,ms,completada
+CUDA,media,512,512,3,256,1024,3,,0.1033,0.019231999293,0.134,0.2649,0,0,0.001,true,ms,completada
+CPU,media,512,512,3,0,0,4,1.9084,,,,1.9084,,,,,ms,completada
+CUDA,media,512,512,3,256,1024,4,,0.1017,0.0299520008266,0.134,0.2732,0,0,0.001,true,ms,completada
+CPU,media,512,512,3,0,0,5,1.905,,,,1.905,,,,,ms,completada
+CUDA,media,512,512,3,256,1024,5,,0.1329,0.024415999651,0.134,0.3022,0,0,0.001,true,ms,completada

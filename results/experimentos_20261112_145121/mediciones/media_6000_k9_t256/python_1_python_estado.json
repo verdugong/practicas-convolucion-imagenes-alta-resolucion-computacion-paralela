@@ -1,0 +1,52 @@
+{
+  "estado": "no_completada",
+  "inicio_utc": "2026-11-12T21:18:27.760805+00:00",
+  "filtro": "media",
+  "mascara": 9,
+  "forma": [
+    6000,
+    6000
+  ],
+  "repeticiones_objetivo": 5,
+  "repeticiones_completas": 1,
+  "fase": "calentamiento",
+  "alcance_cpu": "solo aplicar: recorridos y acumulacion float32; salida y mascara preasignadas",
+  "sesiones_previas": [
+    {
+      "estado": "en_curso",
+      "inicio_utc": "2026-11-12T20:37:16.049735+00:00",
+      "filtro": "media",
+      "mascara": 9,
+      "forma": [
+        6000,
+        6000
+      ],
+      "repeticiones_objetivo": 5,
+      "repeticiones_completas": 1,
+      "fase": "convolucion",
+      "alcance_cpu": "solo aplicar: recorridos y acumulacion float32; salida y mascara preasignadas",
+      "fase_inicio_utc": "2026-11-12T20:55:16.127348+00:00",
+      "piloto": {
+        "pixeles": 4096,
+        "tiempo_s": 0.053685100021539256,
+        "estimacion_por_repeticion_s": 471.84169940805987,
+        "estimacion_sesion_s": 2831.050196448359,
+        "advertencia": "ESTIMACION, no medicion de imagen completa; bordes/caches afectan"
+      },
+      "calentamiento_s": 538.3705228000181,
+      "repeticion_en_curso": 2
+    }
+  ],
+  "fase_inicio_utc": "2026-11-12T21:18:27.816702+00:00",
+  "piloto": {
+    "pixeles": 4096,
+    "tiempo_s": 0.05477480000001833,
+    "estimacion_por_repeticion_s": 481.4191406251611,
+    "estimacion_sesion_s": 2407.0957031258054,
+    "advertencia": "ESTIMACION, no medicion de imagen completa; bordes/caches afectan"
+  },
+  "motivo": "interrupcion recibida; consultar motivo del coordinador",
+  "fase_incompleta_transcurrido_s": 119.74169700000004,
+  "sesion_transcurrido_s": 119.79746390000003,
+  "fin_utc": "2026-11-12T21:20:27.558413+00:00"
+}

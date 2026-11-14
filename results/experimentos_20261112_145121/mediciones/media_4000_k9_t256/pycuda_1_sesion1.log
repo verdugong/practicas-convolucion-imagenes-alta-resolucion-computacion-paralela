@@ -1,0 +1,6 @@
+PyCUDA 1/5: kernel=2.118368 ms, total=17.855200 ms, error CPU=0.0, CUDA C=0.0
+PyCUDA 2/5: kernel=2.112512 ms, total=17.660000 ms, error CPU=0.0, CUDA C=0.0
+PyCUDA 3/5: kernel=2.108448 ms, total=18.153700 ms, error CPU=0.0, CUDA C=0.0
+PyCUDA 4/5: kernel=2.473792 ms, total=18.008300 ms, error CPU=0.0, CUDA C=0.0
+PyCUDA 5/5: kernel=2.109120 ms, total=18.129900 ms, error CPU=0.0, CUDA C=0.0
+VALIDACION CPU-CUDA C-PYCUDA CORRECTA

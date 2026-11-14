@@ -1,0 +1,36 @@
+Inicio UTC: 2026-11-12T19:51:30Z
+Entrada: C:\Users\Oficina\Desktop\Practica2_C_CudaC_Py_PyCUDA\Practica2\data\preparadas\imagen_4000.pgm
+Ancho: 4000
+Alto: 4000
+Filtro: laplaciano
+Mascara: 3
+Repeticiones: 5
+Calentamiento: 1 ejecucion CPU y 1 GPU (si esta habilitada)
+Compilador CPU: MSVC 1944
+Procesadores logicos detectados: 24
+Tipo numerico: float32, intensidades 0..255
+Bordes: ceros; media con denominador k*k fijo
+Tolerancia absoluta: 0.001
+Memoria host: pageable; reservas previas excluidas
+Validacion y E/S de archivos: excluidas del tiempo
+CPU: steady_clock; kernel: eventos CUDA
+Transferencias: steady_clock + finalizacion
+Total GPU: reloj host, incluye instrumentacion y sincronizacion
+Visualizacion: media/nitidez saturacion [0,255]; laplaciano saturar(abs(L),0,255); redondeo. Misma escala CPU/GPU
+Orden CPU/GPU: alternado entre repeticiones
+CPU: Intel64 Family 6 Model 151 Stepping 2, GenuineIntel
+GPU: NVIDIA GeForce RTX 3070
+VRAM total MiB: 8191.5
+Compute capability: 8.6
+CUDA runtime: 12090
+CUDA driver API: 13000
+Compilador NVCC: 12.9.86
+Inicializacion contexto runtime ms: 54.9009
+Reservas y eventos ms: 0.1704
+Compilacion CUDA C: anticipada en build; carga diferida amortizada en calentamiento
+Hilos por bloque: 256
+Bloques en X: 62500
+Aceleracion computo (cociente medianas): 205.33092077
+Aceleracion con transferencias (cociente medianas): 4.87369378146
+Peor error absoluto: 0
+Estado: finalizado correctamente

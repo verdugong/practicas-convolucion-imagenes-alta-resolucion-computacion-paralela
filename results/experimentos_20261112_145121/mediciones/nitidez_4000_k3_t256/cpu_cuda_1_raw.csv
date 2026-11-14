@@ -1,0 +1,11 @@
+implementacion,filtro,ancho,alto,mascara,hilos,bloques,repeticion,cpu_ms,h2d_ms,kernel_ms,d2h_ms,total_ms,error_max,error_medio,tolerancia,validado,unidad,estado
+CPU,nitidez,4000,4000,3,0,0,1,72.439,,,,72.439,,,,,ms,completada
+CUDA,nitidez,4000,4000,3,256,62500,1,,7.2926,0.363072007895,7.0968,14.7627,0,0,0.001,true,ms,completada
+CPU,nitidez,4000,4000,3,0,0,2,72.4738,,,,72.4738,,,,,ms,completada
+CUDA,nitidez,4000,4000,3,256,62500,2,,7.2877,0.361631989479,7.1156,14.7746,0,0,0.001,true,ms,completada
+CPU,nitidez,4000,4000,3,0,0,3,72.0473,,,,72.0473,,,,,ms,completada
+CUDA,nitidez,4000,4000,3,256,62500,3,,7.2035,0.447647988796,7.1991,14.8845,0,0,0.001,true,ms,completada
+CPU,nitidez,4000,4000,3,0,0,4,72.5369,,,,72.5369,,,,,ms,completada
+CUDA,nitidez,4000,4000,3,256,62500,4,,7.1173,0.359104007483,8.2773,15.7623,0,0,0.001,true,ms,completada
+CPU,nitidez,4000,4000,3,0,0,5,75.6363,,,,75.6363,,,,,ms,completada
+CUDA,nitidez,4000,4000,3,256,62500,5,,8.4563,0.451903998852,7.0691,15.9865,0,0,0.001,true,ms,completada

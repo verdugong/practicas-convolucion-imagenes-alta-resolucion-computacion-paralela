@@ -1,0 +1,9 @@
+{
+  "inicio_utc": "2026-11-12T19:51:31.906223+00:00",
+  "contexto_inicializacion_ms": 57.849900011206046,
+  "compilacion_carga_ms": 212.49940001871437,
+  "unidad": "ms",
+  "cache_compilador": "habilitada por defecto; SourceModule puede reutilizarla",
+  "reservas_en_total_gpu": false,
+  "incluida_en_tiempos_kernel": false
+}

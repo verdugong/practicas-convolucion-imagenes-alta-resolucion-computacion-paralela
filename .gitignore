@@ -1,7 +1,9 @@
-/build*/
-/bin/
+build*/
+.venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 *.exe
 *.obj
 *.o
@@ -9,9 +11,10 @@ __pycache__/
 *.ilk
 *.exp
 *.lib
-# No publicar automaticamente originales grandes.
+defensa_gpu/
 data/originales/*
 !data/originales/.gitkeep
-# Los CSV y el codigo SI deben versionarse al preparar la entrega.
 results/**/*.pgm
-
+results/**/*.f32
+*.bundle
+imagenprueba.jpg

@@ -1,0 +1,6 @@
+implementacion,filtro,ancho,alto,mascara,hilos,bloques,repeticion,cpu_ms,h2d_ms,kernel_ms,d2h_ms,total_ms,error_max,error_medio,tolerancia,validado,unidad,error_cuda_max,error_cuda_medio,validado_cuda,estado
+PYTHON,laplaciano,512,512,3,0,0,1,721.9817999866791,,,,721.9817999866791,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,laplaciano,512,512,3,0,0,2,699.0088000020478,,,,699.0088000020478,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,laplaciano,512,512,3,0,0,3,697.2294999868609,,,,697.2294999868609,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,laplaciano,512,512,3,0,0,4,689.6777000220027,,,,689.6777000220027,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,laplaciano,512,512,3,0,0,5,689.6821999980602,,,,689.6821999980602,0.0,0.0,0.001,true,ms,,,,completada

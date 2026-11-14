@@ -1,0 +1,6 @@
+implementacion,filtro,ancho,alto,mascara,hilos,bloques,repeticion,cpu_ms,h2d_ms,kernel_ms,d2h_ms,total_ms,error_max,error_medio,tolerancia,validado,unidad,error_cuda_max,error_cuda_medio,validado_cuda,estado
+PYTHON,nitidez,512,512,3,0,0,1,731.4008000248577,,,,731.4008000248577,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,nitidez,512,512,3,0,0,2,705.202899989672,,,,705.202899989672,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,nitidez,512,512,3,0,0,3,700.8411999850068,,,,700.8411999850068,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,nitidez,512,512,3,0,0,4,695.9932000027038,,,,695.9932000027038,0.0,0.0,0.001,true,ms,,,,completada
+PYTHON,nitidez,512,512,3,0,0,5,697.9773000057321,,,,697.9773000057321,0.0,0.0,0.001,true,ms,,,,completada

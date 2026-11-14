@@ -1,0 +1,36 @@
+Inicio UTC: 2026-11-12T19:52:56Z
+Entrada: C:\Users\Oficina\Desktop\Practica2_C_CudaC_Py_PyCUDA\Practica2\results\campana_20261112_145121\entrada_alternativa.pgm
+Ancho: 512
+Alto: 512
+Filtro: laplaciano
+Mascara: 3
+Repeticiones: 5
+Calentamiento: 1 ejecucion CPU y 1 GPU (si esta habilitada)
+Compilador CPU: MSVC 1944
+Procesadores logicos detectados: 24
+Tipo numerico: float32, intensidades 0..255
+Bordes: ceros; media con denominador k*k fijo
+Tolerancia absoluta: 0.001
+Memoria host: pageable; reservas previas excluidas
+Validacion y E/S de archivos: excluidas del tiempo
+CPU: steady_clock; kernel: eventos CUDA
+Transferencias: steady_clock + finalizacion
+Total GPU: reloj host, incluye instrumentacion y sincronizacion
+Visualizacion: media/nitidez saturacion [0,255]; laplaciano saturar(abs(L),0,255); redondeo. Misma escala CPU/GPU
+Orden CPU/GPU: alternado entre repeticiones
+CPU: Intel64 Family 6 Model 151 Stepping 2, GenuineIntel
+GPU: NVIDIA GeForce RTX 3070
+VRAM total MiB: 8191.5
+Compute capability: 8.6
+CUDA runtime: 12090
+CUDA driver API: 13000
+Compilador NVCC: 12.9.86
+Inicializacion contexto runtime ms: 60.4579
+Reservas y eventos ms: 0.2429
+Compilacion CUDA C: anticipada en build; carga diferida amortizada en calentamiento
+Hilos por bloque: 256
+Bloques en X: 1024
+Aceleracion computo (cociente medianas): 36.8483123887
+Aceleracion con transferencias (cociente medianas): 3.74337957125
+Peor error absoluto: 0
+Estado: finalizado correctamente

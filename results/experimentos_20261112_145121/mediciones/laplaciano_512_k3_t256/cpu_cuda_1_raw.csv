@@ -1,0 +1,11 @@
+implementacion,filtro,ancho,alto,mascara,hilos,bloques,repeticion,cpu_ms,h2d_ms,kernel_ms,d2h_ms,total_ms,error_max,error_medio,tolerancia,validado,unidad,estado
+CPU,laplaciano,512,512,3,0,0,1,1.1848,,,,1.1848,,,,,ms,completada
+CUDA,laplaciano,512,512,3,256,1024,1,,0.1068,0.018335999921,0.1367,0.2701,0,0,0.001,true,ms,completada
+CPU,laplaciano,512,512,3,0,0,2,1.2093,,,,1.2093,,,,,ms,completada
+CUDA,laplaciano,512,512,3,256,1024,2,,0.1022,0.0322239995003,0.1743,0.3172,0,0,0.001,true,ms,completada
+CPU,laplaciano,512,512,3,0,0,3,1.1874,,,,1.1874,,,,,ms,completada
+CUDA,laplaciano,512,512,3,256,1024,3,,0.1044,0.108704000711,0.1584,0.3797,0,0,0.001,true,ms,completada
+CPU,laplaciano,512,512,3,0,0,4,1.1825,,,,1.1825,,,,,ms,completada
+CUDA,laplaciano,512,512,3,256,1024,4,,0.1018,0.019104000181,0.1393,0.2684,0,0,0.001,true,ms,completada
+CPU,laplaciano,512,512,3,0,0,5,1.1994,,,,1.1994,,,,,ms,completada
+CUDA,laplaciano,512,512,3,256,1024,5,,0.1161,0.0431360006332,0.1523,0.3716,0,0,0.001,true,ms,completada

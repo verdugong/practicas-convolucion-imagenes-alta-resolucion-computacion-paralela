@@ -1,0 +1,9 @@
+{
+  "cobertura_experimental_satisfecha": true,
+  "configuraciones_python_con_limitacion_documentada": [
+    "media_6000_k9_t256",
+    "media_4000_k21_t256"
+  ],
+  "pendientes": [],
+  "advertencia": "Verifica cobertura de mediciones; no certifica informe, defensa, procedencia ni commits."
+}
