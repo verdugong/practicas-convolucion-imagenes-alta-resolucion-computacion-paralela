@@ -1,0 +1,28 @@
+{
+  "time_utc": "2026-11-23T15:35:11.603014+00:00",
+  "local_tests": {
+    "command": "python -m pytest tests_web -q",
+    "passed": 19,
+    "failed": 0,
+    "scope": "API Flask, parametros, contenido, aislamiento, FIFO/capacidad/429, recuperacion, TTL, no fallback, medicion del cliente, resumen incompleto"
+  },
+  "original_sources_preserved": 36,
+  "original_large_inputs_hashes_verified": 3,
+  "data_gzip_restoration": "Comprobada con SHA-256; tres PGM originales y alternativa 512.",
+  "python_reference": "Matriz manual, bordes e impulso aprobados en tests/prueba_cpu_python.py",
+  "python_syntax": "compileall aprobado",
+  "javascript_syntax": "node --check aprobado",
+  "dependency_versions": "Paquetes directos descargados y resolucion pip --dry-run validada con Python 3.12 del entorno; no equivale a construir en Ubuntu/Python 3.10.",
+  "report_generator": "Smoke test con evidencia de prueba fuera del paquete; PDF renderizado y fuente TTF incrustada verificados. Sin mediciones ficticias entregadas.",
+  "gpu_real_test": "No disponible: no existe NVIDIA/nvcc/PyCUDA en el entorno de preparacion; diagnose falla explicitamente sin sustituir por CPU.",
+  "docker_build": "Pendiente: Docker no instalado en este entorno.",
+  "browser_visual": "No ejecutada: Chromium local bloqueado por restricciones de sockets; plantilla/API y sintaxis JS comprobadas.",
+  "pending": [
+    "Build desde Git limpio y diagnostico GPU real",
+    "Despliegue local o nube con motivo registrado",
+    "Validacion GPU real 45 casos y errores/aislamiento",
+    "Mediciones reales de los tres modos y concurrencia",
+    "Acceso desde otro cliente y evidencia de red",
+    "URL/SHA publicados, datos/autoria, analisis y firmas"
+  ]
+}

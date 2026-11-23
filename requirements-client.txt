@@ -1,0 +1,6 @@
+# Cliente sin PyCUDA. Python 3.10-3.12.
+requests==2.32.3
+numpy==1.26.4
+Pillow==11.1.0
+matplotlib==3.9.3
+reportlab==4.2.5

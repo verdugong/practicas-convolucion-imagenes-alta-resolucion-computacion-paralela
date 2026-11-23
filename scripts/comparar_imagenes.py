@@ -18,7 +18,12 @@ def panel(imagenes, etiquetas, miniaturas):
     ancho = max(im.width for im in vistas)
     alto = max(im.height for im in vistas)
     lienzo = Image.new(
-        "RGB", (2 * marg + 3 * ancho + 2 * espacio, 2 * marg + titulo + alto), "white"
+        "RGB",
+        (
+            2 * marg + len(vistas) * ancho + (len(vistas) - 1) * espacio,
+            2 * marg + titulo + alto,
+        ),
+        "white",
     )
     dibujo = ImageDraw.Draw(lienzo)
     for i, (im, etiqueta) in enumerate(zip(vistas, etiquetas)):
@@ -33,17 +38,29 @@ def main():
     p.add_argument("original", type=Path)
     p.add_argument("cpu", type=Path)
     p.add_argument("gpu", type=Path)
+    p.add_argument(
+        "--python",
+        type=Path,
+        help="Salida secuencial Python para un comparativo de cinco columnas",
+    )
+    p.add_argument(
+        "--pycuda",
+        type=Path,
+        help="Salida PyCUDA para un comparativo de cinco columnas",
+    )
     p.add_argument("--out", type=Path, default=Path("results/comparacion"))
     p.add_argument("--x", type=int, default=None)
     p.add_argument("--y", type=int, default=None)
     p.add_argument("--lado", type=int, default=400)
     a = p.parse_args()
     imagenes = []
-    for ruta in (a.original, a.cpu, a.gpu):
+    for ruta in [a.original, a.cpu, a.gpu] + ([a.python] if a.python else []) + (
+        [a.pycuda] if a.pycuda else []
+    ):
         with Image.open(ruta) as im:
             imagenes.append(im.convert("L"))
     if len({im.size for im in imagenes}) != 1:
-        p.error("Las tres imagenes deben tener las mismas dimensiones.")
+        p.error("Todas las imagenes deben tener las mismas dimensiones.")
     ancho, alto = imagenes[0].size
     lado = min(a.lado, ancho, alto)
     if lado <= 0:
@@ -56,7 +73,11 @@ def main():
     if any(ruta.exists() for ruta in rutas):
         p.error("Ya existen salidas. Elegir otro prefijo --out.")
     a.out.parent.mkdir(parents=True, exist_ok=True)
-    etiquetas = ["Original", "Salida CPU", "Salida GPU"]
+    etiquetas = ["Original", "CPU C++", "CUDA C"]
+    if a.python:
+        etiquetas.append("CPU Python")
+    if a.pycuda:
+        etiquetas.append("PyCUDA")
     panel(imagenes, etiquetas, True).save(rutas[0])
     caja = (x, y, x + lado, y + lado)
     panel([im.crop(caja) for im in imagenes], etiquetas, False).save(rutas[1])

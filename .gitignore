@@ -1,7 +1,22 @@
-/build*/
-/bin/
+build*/
+.venv/
+venv/
 __pycache__/
 *.pyc
+runtime/
+*.bundle
+*.zip
+# Campanas antiguas completas y buffers float32 grandes se conservan fuera de Git.
+results/
+*.f32
+# evidence/ NO se ignora: subir CSV/JSON/figuras verificadas de practica 03.
+
+# Los datos exactos se versionan como .pgm.gz (cada uno <25 MiB).
+data/preparadas/*.pgm
+data/preparadas/*.pgm.tmp
+
+*.pyo
+*.pyd
 *.exe
 *.obj
 *.o
@@ -9,9 +24,9 @@ __pycache__/
 *.ilk
 *.exp
 *.lib
-# No publicar automaticamente originales grandes.
 data/originales/*
 !data/originales/.gitkeep
-# Los CSV y el codigo SI deben versionarse al preparar la entrega.
-results/**/*.pgm
-
+*.bundle
+GUIA_PRACTICA3.md
+enuncido_practica02.pdf
+*.bat

@@ -1,0 +1,14 @@
+.git
+.vscode
+.venv
+**/__pycache__
+**/*.pyc
+build*
+results
+runtime
+evidence
+*.zip
+*.bundle
+*.pdf
+data/originales
+docs/antecedentes

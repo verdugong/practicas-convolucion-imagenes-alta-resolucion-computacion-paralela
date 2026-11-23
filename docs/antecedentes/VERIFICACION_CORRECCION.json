@@ -1,0 +1,26 @@
+{
+  "alcance": "Verificacion local sin GPU NVIDIA. No son mediciones del laboratorio.",
+  "sistema": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "pruebas": [
+    {
+      "prueba": "CPU C++",
+      "codigo": 0,
+      "salida": "PRUEBAS CPU CORRECTAS: matriz manual, bordes, validacion, estadistica y PGM.\n"
+    },
+    {
+      "prueba": "CPU Python",
+      "codigo": 0,
+      "salida": "PRUEBAS CPU PYTHON CORRECTAS: matriz manual, bordes e impulso.\n"
+    },
+    {
+      "prueba": "Pipeline y 20 casos C++/Python",
+      "codigo": 0,
+      "salida": "test_bases_aceleracion (__main__.Pipeline.test_bases_aceleracion) ... ok\ntest_campana_limitacion_resume_y_manipulacion (__main__.Pipeline.test_campana_limitacion_resume_y_manipulacion) ... ok\ntest_datos_incompletos_conservados_sin_estadistica (__main__.Pipeline.test_datos_incompletos_conservados_sin_estadistica) ... ok\ntest_incompleto_no_aceleracion (__main__.Pipeline.test_incompleto_no_aceleracion) ... ok\ntest_interrupcion_calentamiento (__main__.Pipeline.test_interrupcion_calentamiento) ... ok\ntest_interrupcion_reanudacion (__main__.Pipeline.test_interrupcion_reanudacion) ... ok\ntest_nan_no_valida (__main__.Pipeline.test_nan_no_valida) ... ok\ntest_plan_no_repite_python_hilos (__main__.Pipeline.test_plan_no_repite_python_hilos) ... ok\ntest_presupuesto_proceso (__main__.Pipeline.test_presupuesto_proceso) ... ok\ntest_referencia_cpp_y_python_rectangulares (__main__.Pipeline.test_referencia_cpp_y_python_rectangulares) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 1.163s\n\nOK\n"
+    }
+  ],
+  "cuda_nueva_version": "Pendiente de compilar y ejecutar en laboratorio",
+  "evidencia_original": "Registro de cuatro pruebas originales aprobadas, 2026-11-10 15:26 Ecuador; preservado",
+  "kernels_cuda_c": "media, nitidez y laplaciano: contenido identico al paquete recibido",
+  "datos_originales": "Hashes y conversiones comprobados; originales sin modificar"
+}

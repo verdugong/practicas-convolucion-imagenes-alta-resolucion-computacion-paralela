@@ -26,6 +26,7 @@ struct Opciones {
     std::string prefijo = "results/ensayo";
     int k = 3, hilos = 256, repeticiones = 5;
     bool demo = false;
+    bool exportarFloat = false; // Puente numerico hacia PyCUDA, fuera de los tiempos.
 };
 void ayuda()
 {
@@ -36,6 +37,7 @@ void ayuda()
       << "  --threads 128|256|512  Hilos por bloque (predeterminado 256)\n"
       << "  --reps N           Repeticiones medidas, minimo 5\n"
       << "  --output prefijo   Prefijo NUEVO de archivos (results/ensayo)\n"
+      << "  --export-float     Exportar salidas float32 para validacion con PyCUDA\n"
       << "  --help             Mostrar esta ayuda\n"
       << "Tres filtros CPU/GPU. --demo NO sustituye las fotos obligatorias.\n";
 }
@@ -51,6 +53,7 @@ Opciones opciones(int argc, char** argv)
     Opciones o;
     for (int i = 1; i < argc; ++i) {
         const std::string clave = argv[i];
+        if (clave == "--export-float") { o.exportarFloat = true; continue; }
         if (clave == "--demo") { o.demo = true; continue; }
         if (clave != "--input" && clave != "--output" && clave != "--mask" &&
             clave != "--threads" && clave != "--reps" && clave != "--filter")
@@ -91,6 +94,16 @@ void registrarResumen(std::ofstream& f, const char* nombre,
     std::cout << nombre << ": mediana=" << mediana
               << ' ' << unidad << ", IQR=" << q3 - q1 << '\n';
 }
+// Archivo binario sin saturacion ni redondeo: un float por pixel, orden de filas.
+// Windows x64 y Linux x86-64 usan float IEEE-754 de 32 bits, little-endian.
+void guardarFloat(const std::string& ruta, const std::vector<float>& valores)
+{
+    static_assert(sizeof(float) == 4, "Se requiere float32.");
+    std::ofstream f(ruta, std::ios::binary);
+    f.write(reinterpret_cast<const char*>(valores.data()),
+            static_cast<std::streamsize>(valores.size() * sizeof(float)));
+    if (!f) throw std::runtime_error("Error al exportar float32: " + ruta);
+}
 int main(int argc, char** argv)
 {
     try {
@@ -109,7 +122,7 @@ int main(int argc, char** argv)
         const Imagen imagen = o.demo ? crearDemo() : cargarPGM(o.entrada);
         validarEntrada(imagen, o.k);
         for (const char* sufijo : {"_raw.csv", "_summary.csv", "_cpu.pgm",
-                                   "_gpu.pgm", "_metadata.txt"})
+                                   "_gpu.pgm", "_metadata.txt", "_cpu.f32", "_cuda.f32"})
             if (fs::exists(o.prefijo + sufijo))
                 throw std::runtime_error("El prefijo ya existe. Elegir otro --output.");
         const fs::path padre = fs::path(o.prefijo).parent_path();
@@ -166,7 +179,7 @@ int main(int argc, char** argv)
         auto csv = abrir(o.prefijo + "_raw.csv");
         csv << "implementacion,filtro,ancho,alto,mascara,hilos,bloques,repeticion,"
                "cpu_ms,h2d_ms,kernel_ms,d2h_ms,total_ms,error_max,error_medio,"
-               "tolerancia,validado,unidad\n";
+               "tolerancia,validado,unidad,estado\n";
         std::vector<double> cpu, h2d, kernel, d2h, total, transferencias;
         double peorError = 0.0;
         for (int r = 1; r <= o.repeticiones; ++r) {
@@ -193,7 +206,7 @@ int main(int argc, char** argv)
             cpu.push_back(tiempoCPU);
             csv << "CPU," << nombreFiltro(o.filtro) << ',' << imagen.ancho << ',' << imagen.alto << ','
                 << o.k << ",0,0," << r << ',' << tiempoCPU
-                << ",,,," << tiempoCPU << ",,,,,ms\n";
+                << ",,,," << tiempoCPU << ",,,,,ms,completada\n";
 #ifdef PRACTICA_WITH_CUDA
             h2d.push_back(t.h2d_ms); kernel.push_back(t.kernel_ms);
             d2h.push_back(t.d2h_ms); total.push_back(t.total_ms);
@@ -202,7 +215,8 @@ int main(int argc, char** argv)
                 << o.k << ',' << o.hilos << ',' << gpu.bloques() << ',' << r
                 << ",," << t.h2d_ms << ',' << t.kernel_ms << ',' << t.d2h_ms
                 << ',' << t.total_ms << ',' << e.maximo << ',' << e.medio << ','
-                << TOLERANCIA << ',' << (e.valido ? "true" : "false") << ",ms\n";
+                << TOLERANCIA << ',' << (e.valido ? "true" : "false") << ",ms,"
+                << (e.valido ? "completada" : "fallida") << '\n';
             csv.flush();
             if (!e.valido)
                 throw std::runtime_error("CPU/GPU difieren. Se conservo el CSV del fallo.");
@@ -232,11 +246,13 @@ int main(int argc, char** argv)
                   << "\nAceleracion con transferencias (cociente medianas): "
                   << (medianaTotal > 0 ? medianaCPU / medianaTotal : NAN)
                   << "\nPeor error absoluto: " << peorError << '\n';
+        if (o.exportarFloat) guardarFloat(o.prefijo + "_cuda.f32", salidaGPU);
         guardarVisual(o.prefijo + "_gpu.pgm", imagen, salidaGPU, o.filtro);
         std::cout << "VALIDACION CPU-GPU CORRECTA\n";
 #else
         (void)peorError;
 #endif
+        if (o.exportarFloat) guardarFloat(o.prefijo + "_cpu.f32", salidaCPU);
         guardarVisual(o.prefijo + "_cpu.pgm", imagen, salidaCPU, o.filtro);
         metadatos << "Estado: finalizado correctamente\n";
         csv.flush(); resumen.flush(); metadatos.flush();

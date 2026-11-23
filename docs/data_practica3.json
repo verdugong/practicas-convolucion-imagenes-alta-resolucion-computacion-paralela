@@ -1,0 +1,21 @@
+{
+  "inputs": [
+    {
+      "path": "data/preparadas/imagen_2000.pgm",
+      "sha256": "62a8a9d73f8d64840c110c26d028cac76da07d0b0525381d509968d86b290c63"
+    },
+    {
+      "path": "data/preparadas/imagen_4000.pgm",
+      "sha256": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+    },
+    {
+      "path": "data/preparadas/imagen_512.pgm",
+      "sha256": "93d6e824c958370404af2e6bfc1e99aa1a8fe5a562fb7f4122b27a37af785c16"
+    },
+    {
+      "path": "data/preparadas/imagen_6000.pgm",
+      "sha256": "8bfec402f70f587c284201845af86a64507777d1b4e32606125b07c89d606707"
+    }
+  ],
+  "conversion": "Los tres PGM grandes se preservan byte por byte en gzip. 512 es alternativa menor generada desde PGM4000 con Pillow LANCZOS; no reemplaza casos grandes viables."
+}

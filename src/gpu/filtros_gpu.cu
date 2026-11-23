@@ -31,6 +31,7 @@ struct FiltroGPU::Impl {
     cudaEvent_t inicio = nullptr, fin = nullptr;
     cudaDeviceProp propiedades{};
     int runtime = 0, driver = 0;
+    double contexto_ms = 0, reserva_ms = 0;
     ~Impl()
     {
         // No lanzar excepciones desde un destructor, incluso tras un fallo CUDA.
@@ -49,7 +50,10 @@ FiltroGPU::FiltroGPU(int ancho, int alto, int k, int hilos, Filtro filtro)
     if (filtro != Filtro::Media && k != 3)
         throw std::invalid_argument("Nitidez y laplaciano requieren mascara 3.");
     p_->filtro = filtro;
+    const auto contextoInicio = Reloj::now();
     comprobar(cudaSetDevice(0), "Seleccionar GPU");
+    comprobar(cudaFree(nullptr), "Inicializar contexto runtime");
+    p_->contexto_ms = milisegundos(contextoInicio, Reloj::now());
     comprobar(cudaGetDeviceProperties(&p_->propiedades, 0), "Consultar GPU");
     comprobar(cudaRuntimeGetVersion(&p_->runtime), "Consultar CUDA runtime");
     comprobar(cudaDriverGetVersion(&p_->driver), "Consultar CUDA driver");
@@ -64,12 +68,14 @@ FiltroGPU::FiltroGPU(int ancho, int alto, int k, int hilos, Filtro filtro)
         throw std::runtime_error("La imagen supera el limite de bloques en X.");
     p_->bloques = static_cast<int>(bloques);
     p_->bytes = p_->cantidad * sizeof(float);
+    const auto reservaInicio = Reloj::now();
     comprobar(cudaMalloc(reinterpret_cast<void**>(&p_->entrada), p_->bytes),
               "Reservar entrada GPU");
     comprobar(cudaMalloc(reinterpret_cast<void**>(&p_->salida), p_->bytes),
               "Reservar salida GPU");
     comprobar(cudaEventCreate(&p_->inicio), "Crear evento inicial");
     comprobar(cudaEventCreate(&p_->fin), "Crear evento final");
+    p_->reserva_ms = milisegundos(reservaInicio, Reloj::now());
 }
 FiltroGPU::~FiltroGPU() = default;
 
@@ -128,6 +134,9 @@ std::string FiltroGPU::descripcion() const
       << "\nCUDA driver API: " << p_->driver
       << "\nCompilador NVCC: " << __CUDACC_VER_MAJOR__ << '.'
       << __CUDACC_VER_MINOR__ << '.' << __CUDACC_VER_BUILD__
+      << "\nInicializacion contexto runtime ms: " << p_->contexto_ms
+      << "\nReservas y eventos ms: " << p_->reserva_ms
+      << "\nCompilacion CUDA C: anticipada en build; carga diferida amortizada en calentamiento"
       << "\nHilos por bloque: " << p_->hilos
       << "\nBloques en X: " << p_->bloques << '\n';
     return s.str();
