@@ -1,0 +1,1472 @@
+{
+  "groups": [
+    {
+      "mode": "container_direct",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "2000",
+      "height": "2000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "1858f91d459b",
+      "sha256_input": "62a8a9d73f8d64840c110c26d028cac76da07d0b0525381d509968d86b290c63",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "62a8a9d73f8d64840c110c26d028cac76da07d0b0525381d509968d86b290c63"
+      ],
+      "h2d_ms": {
+        "median": 2.261261000057857,
+        "iqr": 0.45644200008609914,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 0.6451519727706909,
+        "iqr": 0.013727962970733643,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 2.376214999912918,
+        "iqr": 0.5979430002298614,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 5.790782000076433,
+        "iqr": 1.2047049999637238,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.1666400000649446,
+        "iqr": 0.3601289995458501,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 3.0311680002341745,
+        "iqr": 3.631640000094194,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 528.9060380000592,
+        "iqr": 8.796059000360401,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 545.7181730002958,
+        "iqr": 8.914578999792866,
+        "n": 5
+      }
+    },
+    {
+      "mode": "container_direct",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "1858f91d459b",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 48.894418999680056,
+        "iqr": 4.028748000109772,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 18.205055236816406,
+        "iqr": 0.8949108123779297,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.661065000160306,
+        "iqr": 0.13600500005850336,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 100.13160099970264,
+        "iqr": 3.7877320005463844,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.3530470000659989,
+        "iqr": 0.08546599974579294,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 28.50840600012816,
+        "iqr": 1.1080750000473927,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 1918.1996030001756,
+        "iqr": 26.060121000682557,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2064.4178790003025,
+        "iqr": 21.56702500042229,
+        "n": 5
+      }
+    },
+    {
+      "mode": "container_direct",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "6000",
+      "height": "6000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "1858f91d459b",
+      "sha256_input": "8bfec402f70f587c284201845af86a64507777d1b4e32606125b07c89d606707",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "8bfec402f70f587c284201845af86a64507777d1b4e32606125b07c89d606707"
+      ],
+      "h2d_ms": {
+        "median": 109.14150600001449,
+        "iqr": 4.498843999499513,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 38.20857620239258,
+        "iqr": 0.30035400390625,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 75.36592999986169,
+        "iqr": 1.3969260003250383,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 223.24369299985847,
+        "iqr": 11.369507999916095,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 4.4358190002640185,
+        "iqr": 0.3545029999258986,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 66.06217399985326,
+        "iqr": 4.441703999873425,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 4279.773917000057,
+        "iqr": 22.93581300000369,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 4578.097489000356,
+        "iqr": 34.739951999654295,
+        "n": 5
+      }
+    },
+    {
+      "mode": "container_direct",
+      "experiment": "filtros_mascara",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "1858f91d459b",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 46.550877000299806,
+        "iqr": 2.325920000203041,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.0164155960083,
+        "iqr": 0.2368316650390625,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.381650999672274,
+        "iqr": 0.13272899968796992,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 90.80922699968141,
+        "iqr": 2.2952459999032726,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.9763240002248494,
+        "iqr": 0.7828570001038315,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 27.693288000136818,
+        "iqr": 3.401040000426292,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 2108.0342690002,
+        "iqr": 6.365396999626682,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2241.1194909996084,
+        "iqr": 3.863403999730508,
+        "n": 5
+      }
+    },
+    {
+      "mode": "container_direct",
+      "experiment": "filtros_mascara",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "21",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "1858f91d459b",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 47.413501999926666,
+        "iqr": 0.9069749999071064,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 76.73993682861328,
+        "iqr": 5.505790710449219,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.62881299972287,
+        "iqr": 0.2972380002574937,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 157.51169699979073,
+        "iqr": 5.3121690002626565,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.5757330002088565,
+        "iqr": 0.5766460003542306,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 28.84178000022075,
+        "iqr": 1.3171049999982642,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 1781.548918000226,
+        "iqr": 13.609384000119462,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 1980.3908890003186,
+        "iqr": 8.554880000247067,
+        "n": 5
+      }
+    },
+    {
+      "mode": "container_direct",
+      "experiment": "filtros_mascara",
+      "filter": "nitidez",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "1858f91d459b",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 50.47675600008006,
+        "iqr": 5.099610999877768,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.247520446777344,
+        "iqr": 0.3388481140136719,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 35.30468299959466,
+        "iqr": 1.9233680000070308,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 97.96224400042775,
+        "iqr": 2.7047689995924884,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.751597000293259,
+        "iqr": 0.8890419994713739,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 28.46291400010159,
+        "iqr": 10.021675000189134,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 1925.1253610000276,
+        "iqr": 17.436672000258113,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2069.528198000171,
+        "iqr": 20.462126999973407,
+        "n": 5
+      }
+    },
+    {
+      "mode": "container_direct",
+      "experiment": "filtros_mascara",
+      "filter": "laplaciano",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "1858f91d459b",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 49.55619399970601,
+        "iqr": 3.7653420004062355,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.352736473083496,
+        "iqr": 0.07238388061523438,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 34.4295710001461,
+        "iqr": 0.959962000251835,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 96.59052599999995,
+        "iqr": 4.758391999985179,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.6391690001000825,
+        "iqr": 0.31357700027001556,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 33.623082999838516,
+        "iqr": 13.01965900029245,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 2312.1546019997368,
+        "iqr": 14.45772199986095,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2461.801861999902,
+        "iqr": 24.525341000298795,
+        "n": 5
+      }
+    },
+    {
+      "mode": "host_direct",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "2000",
+      "height": "2000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "DESKTOP-NBQUT6O",
+      "sha256_input": "62a8a9d73f8d64840c110c26d028cac76da07d0b0525381d509968d86b290c63",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "62a8a9d73f8d64840c110c26d028cac76da07d0b0525381d509968d86b290c63"
+      ],
+      "h2d_ms": {
+        "median": 3.165699999954086,
+        "iqr": 0.07230000028357608,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 0.6635839939117432,
+        "iqr": 0.028864026069641113,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 2.897800000027928,
+        "iqr": 0.07860000005166512,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 6.827000000157568,
+        "iqr": 0.3597999993871781,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.3190000006725313,
+        "iqr": 0.01919999976962572,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 7.8520000006392365,
+        "iqr": 0.7569999997940613,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 240.07090000031894,
+        "iqr": 6.851500000266242,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 257.0525999999518,
+        "iqr": 6.665900000371039,
+        "n": 5
+      }
+    },
+    {
+      "mode": "host_direct",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "DESKTOP-NBQUT6O",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 11.371800000233634,
+        "iqr": 9.496499999841035,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 2.111232042312622,
+        "iqr": 6.104959964752197,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 12.585299999955168,
+        "iqr": 7.193600000391598,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 26.076699999975972,
+        "iqr": 22.796799999923678,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.3189999997630366,
+        "iqr": 0.001600000359758269,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 34.41990000010264,
+        "iqr": 0.31099999978323467,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 936.2432000007175,
+        "iqr": 7.050199999866891,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 1010.3915999998208,
+        "iqr": 27.45000000049913,
+        "n": 5
+      }
+    },
+    {
+      "mode": "host_direct",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "6000",
+      "height": "6000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "DESKTOP-NBQUT6O",
+      "sha256_input": "8bfec402f70f587c284201845af86a64507777d1b4e32606125b07c89d606707",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "8bfec402f70f587c284201845af86a64507777d1b4e32606125b07c89d606707"
+      ],
+      "h2d_ms": {
+        "median": 112.2998999999254,
+        "iqr": 3.3498999991934397,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 37.693599700927734,
+        "iqr": 12.379617691040039,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 74.43080000030022,
+        "iqr": 44.710500000292086,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 224.88290000001143,
+        "iqr": 70.79379999959201,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.5917999997109291,
+        "iqr": 0.36290000025474,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 77.45709999926476,
+        "iqr": 1.8940999998449115,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 2054.881399999431,
+        "iqr": 12.041900000440364,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2377.8712000002997,
+        "iqr": 56.42160000024887,
+        "n": 5
+      }
+    },
+    {
+      "mode": "host_direct",
+      "experiment": "filtros_mascara",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "DESKTOP-NBQUT6O",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 48.122199999852455,
+        "iqr": 1.4471000004050438,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 9.746047973632812,
+        "iqr": 0.4114561080932617,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.397400000467314,
+        "iqr": 0.1809999994293321,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 91.5050000003248,
+        "iqr": 2.5149000002784305,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.2616000001580687,
+        "iqr": 0.0014000006558489986,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 34.82410000015079,
+        "iqr": 1.3939000000391388,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 963.3448000004137,
+        "iqr": 10.081299999910698,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 1096.3385999993989,
+        "iqr": 7.547999999587773,
+        "n": 5
+      }
+    },
+    {
+      "mode": "host_direct",
+      "experiment": "filtros_mascara",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "21",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "DESKTOP-NBQUT6O",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 20.85609999994631,
+        "iqr": 29.983099999299156,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 30.702880859375,
+        "iqr": 14.073759078979492,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 16.093799999907787,
+        "iqr": 17.932699999619217,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 66.93129999985103,
+        "iqr": 62.03060000007099,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.2604000001156237,
+        "iqr": 0.051500000154192094,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 34.933599999931175,
+        "iqr": 1.1544000008143485,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 879.0551000001869,
+        "iqr": 5.280099999254162,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 994.0659000003507,
+        "iqr": 66.91239999963727,
+        "n": 5
+      }
+    },
+    {
+      "mode": "host_direct",
+      "experiment": "filtros_mascara",
+      "filter": "nitidez",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "DESKTOP-NBQUT6O",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 49.18850000012753,
+        "iqr": 2.251599998999154,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.408160209655762,
+        "iqr": 0.20572853088378906,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.33870000005845,
+        "iqr": 0.5086999999548425,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 93.14449999965291,
+        "iqr": 2.741299999797775,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.24880000000848668,
+        "iqr": 0.013199999557400588,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 38.48009999910573,
+        "iqr": 3.1996999996408704,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 870.486300000266,
+        "iqr": 7.249500000398257,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 1014.9718999991819,
+        "iqr": 7.797700000082841,
+        "n": 5
+      }
+    },
+    {
+      "mode": "host_direct",
+      "experiment": "filtros_mascara",
+      "filter": "laplaciano",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "DESKTOP-NBQUT6O",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 49.981799999841314,
+        "iqr": 1.9406999999773689,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.159903526306152,
+        "iqr": 0.02239990234375,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.92319999966276,
+        "iqr": 0.5284999997456907,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 94.31759999915812,
+        "iqr": 1.8722000004345318,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.24029999985941686,
+        "iqr": 0.006299999768089037,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 36.29180000007182,
+        "iqr": 0.5707999998776359,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 918.4617999999318,
+        "iqr": 9.127799999987474,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 1058.8268000001335,
+        "iqr": 5.128599999807193,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "2000",
+      "height": "2000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "62a8a9d73f8d64840c110c26d028cac76da07d0b0525381d509968d86b290c63",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "62a8a9d73f8d64840c110c26d028cac76da07d0b0525381d509968d86b290c63"
+      ],
+      "h2d_ms": {
+        "median": 2.1788610001749475,
+        "iqr": 0.12295700025788392,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 0.6429439783096313,
+        "iqr": 0.003103971481323242,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 1.951388000179577,
+        "iqr": 1.9802150004579744,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 4.719875999853684,
+        "iqr": 2.1489910000127566,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 0.691736000135279,
+        "iqr": 0.4158030001235602,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 3.4388079998279864,
+        "iqr": 0.21359899983508512,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 525.0183480002306,
+        "iqr": 5.5186020003930025,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 551.5892220000751,
+        "iqr": 5.375103000005765,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.09191199978886289,
+        "iqr": 0.050210000154038426,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 592.2687000002043,
+        "iqr": 16.93539999996574,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 535.2786900002684,
+        "iqr": 8.527916000275582,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 50.75431400018715,
+        "iqr": 0.811249999969732,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 18.161760330200195,
+        "iqr": 0.10422325134277344,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.95567500001562,
+        "iqr": 0.7898260000729351,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 104.33490500008702,
+        "iqr": 1.0245750004287402,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.361342000109289,
+        "iqr": 0.17798999988372088,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 24.224689999755356,
+        "iqr": 2.369777000239992,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 1947.1234630000254,
+        "iqr": 14.009447000262298,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 2156.443056000171,
+        "iqr": 18.591975000163075,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.09633099989514449,
+        "iqr": 0.08400600017921533,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 2227.41010000027,
+        "iqr": 15.008800000032352,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2090.042189000087,
+        "iqr": 16.071137000380986,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "resolucion",
+      "filter": "media",
+      "width": "6000",
+      "height": "6000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "8bfec402f70f587c284201845af86a64507777d1b4e32606125b07c89d606707",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "8bfec402f70f587c284201845af86a64507777d1b4e32606125b07c89d606707"
+      ],
+      "h2d_ms": {
+        "median": 108.42683700002453,
+        "iqr": 4.248323999490822,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 37.04006576538086,
+        "iqr": 4.5345306396484375,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 44.70881199995347,
+        "iqr": 32.46561500009193,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 219.17440100014574,
+        "iqr": 28.497545999925933,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 2.8829540001424903,
+        "iqr": 0.6714160003866709,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 75.62448699991364,
+        "iqr": 2.511482000045362,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 4206.968359999792,
+        "iqr": 10.616577999826404,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 4653.995691000091,
+        "iqr": 60.1488449997305,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.09678700007498264,
+        "iqr": 0.03289799997219234,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 4812.104200000249,
+        "iqr": 27.816300000267802,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 4508.436267999969,
+        "iqr": 47.91453299958448,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "filtros_mascara",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 51.29610700032572,
+        "iqr": 0.33060199984902283,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.197504043579102,
+        "iqr": 0.07417583465576172,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 34.6202489999996,
+        "iqr": 1.295213000048534,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 97.18992799980697,
+        "iqr": 1.8653950000953046,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.6410429998359177,
+        "iqr": 0.5475749999277468,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 25.17708000004859,
+        "iqr": 6.376582000484632,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 2148.075961000359,
+        "iqr": 52.073537999604014,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 2354.189310000038,
+        "iqr": 57.955256999775884,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.10312900030839955,
+        "iqr": 0.08336099972439115,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 2467.3949999996694,
+        "iqr": 74.10369999979594,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2278.135347999978,
+        "iqr": 56.26044000064212,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "filtros_mascara",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "21",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 51.16699499967581,
+        "iqr": 0.257352000062383,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 77.1559066772461,
+        "iqr": 4.421058654785156,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 35.17417600005501,
+        "iqr": 0.09291000014854944,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 162.31446799974947,
+        "iqr": 4.090567999810446,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.9026549998670816,
+        "iqr": 0.5681190000359493,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 27.564973999687936,
+        "iqr": 3.0654719998892688,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 1799.7496020002473,
+        "iqr": 10.460458000125072,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 2071.8461110000135,
+        "iqr": 12.519229000190535,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.09520500043436186,
+        "iqr": 0.0036289998206484597,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 2163.394499999413,
+        "iqr": 15.820800000255986,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2001.278100000036,
+        "iqr": 13.410763999672781,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "filtros_mascara",
+      "filter": "nitidez",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 50.380478000079165,
+        "iqr": 1.610182000149507,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.335583686828613,
+        "iqr": 0.41849613189697266,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 35.47385599995323,
+        "iqr": 1.0754979998637282,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 95.88242700010596,
+        "iqr": 3.7422639998112572,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.483730000018113,
+        "iqr": 0.306616999750986,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 20.636457000364317,
+        "iqr": 5.599944999630679,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 1921.6520899999523,
+        "iqr": 11.619394000263128,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 2130.7158609997714,
+        "iqr": 37.50463500000478,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.10416300028737169,
+        "iqr": 0.05650399998557987,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 2237.758700000086,
+        "iqr": 42.150799999944866,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2062.622086999909,
+        "iqr": 38.927807999698416,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "filtros_mascara",
+      "filter": "laplaciano",
+      "width": "4000",
+      "height": "4000",
+      "mask": "3",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 51.21368900017842,
+        "iqr": 0.2513730000828218,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 10.418623924255371,
+        "iqr": 0.285888671875,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 33.81145399998786,
+        "iqr": 0.03622799977165414,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 96.36545500006832,
+        "iqr": 0.9868780002761923,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.2808559999939462,
+        "iqr": 0.6157579996397544,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 25.178793000122823,
+        "iqr": 5.707844999960798,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 2292.367763999664,
+        "iqr": 4.3686779999916325,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 2493.30376800026,
+        "iqr": 3.5206590000598226,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.09423300025446224,
+        "iqr": 0.0047429998630832415,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 2587.051700000302,
+        "iqr": 34.46410000015021,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2423.8312719999158,
+        "iqr": 3.35461899976508,
+        "n": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "concurrencia",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "1",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 5,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 51.30755199979831,
+        "iqr": 0.33505699957459,
+        "n": 5
+      },
+      "kernel_ms": {
+        "median": 18.13987159729004,
+        "iqr": 0.12147331237792969,
+        "n": 5
+      },
+      "d2h_ms": {
+        "median": 34.500811000270915,
+        "iqr": 1.2712319999081956,
+        "n": 5
+      },
+      "total_ms": {
+        "median": 104.85337499994785,
+        "iqr": 2.1140240000931954,
+        "n": 5
+      },
+      "allocation_ms": {
+        "median": 1.371704000121099,
+        "iqr": 0.23740499955238192,
+        "n": 5
+      },
+      "decode_prepare_ms": {
+        "median": 26.753295000162325,
+        "iqr": 0.1343809999525547,
+        "n": 5
+      },
+      "encode_ms": {
+        "median": 1946.3406919999215,
+        "iqr": 34.35697899976731,
+        "n": 5
+      },
+      "server_processing_ms": {
+        "median": 2156.7767040000945,
+        "iqr": 34.00294800030679,
+        "n": 5
+      },
+      "queue_ms": {
+        "median": 0.093055999968783,
+        "iqr": 0.0044749999688065145,
+        "n": 5
+      },
+      "client_total_ms": {
+        "median": 2248.620899999878,
+        "iqr": 25.333800000225892,
+        "n": 5
+      },
+      "processing_ms": {
+        "median": 2087.7020650000304,
+        "iqr": 34.28960600058417,
+        "n": 5
+      },
+      "successful_per_second": {
+        "median": 0.44037353363869014,
+        "iqr": 0.005108471318068575,
+        "rounds": 5
+      }
+    },
+    {
+      "mode": "service",
+      "experiment": "concurrencia",
+      "filter": "media",
+      "width": "4000",
+      "height": "4000",
+      "mask": "9",
+      "threads": "256",
+      "concurrency": "2",
+      "environment": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+      "sha256_input": "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241",
+      "n": 10,
+      "complete": true,
+      "input_hashes": [
+        "692aabbb9a429ccbd995923a275b03f2acd55281025a457aac80ad9e75a2a241"
+      ],
+      "h2d_ms": {
+        "median": 51.11039350003921,
+        "iqr": 0.9389162498791848,
+        "n": 10
+      },
+      "kernel_ms": {
+        "median": 18.163151741027832,
+        "iqr": 0.11832046508789062,
+        "n": 10
+      },
+      "d2h_ms": {
+        "median": 35.46768699993663,
+        "iqr": 1.718538499630995,
+        "n": 10
+      },
+      "total_ms": {
+        "median": 105.5403989998922,
+        "iqr": 2.2545659999195777,
+        "n": 10
+      },
+      "allocation_ms": {
+        "median": 1.1151025000799564,
+        "iqr": 0.5981210003938031,
+        "n": 10
+      },
+      "decode_prepare_ms": {
+        "median": 31.44954549998147,
+        "iqr": 3.762794749945897,
+        "n": 10
+      },
+      "encode_ms": {
+        "median": 1933.0974449999303,
+        "iqr": 10.602937249700517,
+        "n": 10
+      },
+      "server_processing_ms": {
+        "median": 2144.8109109999223,
+        "iqr": 11.250825749925752,
+        "n": 10
+      },
+      "queue_ms": {
+        "median": 1063.9689560000534,
+        "iqr": 2132.6704635000624,
+        "n": 10
+      },
+      "client_total_ms": {
+        "median": 3384.3987999998717,
+        "iqr": 2144.2161500001475,
+        "n": 10
+      },
+      "processing_ms": {
+        "median": 2081.1452299999473,
+        "iqr": 17.13903874974676,
+        "n": 10
+      },
+      "successful_per_second": {
+        "median": 0.4455508958357341,
+        "iqr": 0.0013157698397862072,
+        "rounds": 5
+      }
+    }
+  ],
+  "failures": [],
+  "csv_files": [
+    "evidence\\container\\direct.csv",
+    "evidence\\host\\direct.csv",
+    "evidence\\host_02\\direct.csv",
+    "evidence\\host_03\\direct.csv",
+    "evidence\\service\\service.csv"
+  ],
+  "warnings": [
+    "No atribuir diferencias a Docker sin host equivalente, misma GPU, hash e hilos.",
+    "No usar mediciones simuladas ni resultados de practica 02 como resultados de practica 03."
+  ]
+}

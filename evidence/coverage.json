@@ -1,0 +1,6 @@
+{
+  "measurement_coverage_satisfied": true,
+  "host_limitation": false,
+  "pending": [],
+  "note": "Cuenta series completas; revisar tambien hash/GPU/entorno, validacion y limitaciones. Este auditor no evalua automaticamente la alternativa menor documentada ni firmas/informe."
+}

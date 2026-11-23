@@ -1,0 +1,147 @@
+{
+  "client": {
+    "time_utc": "2026-11-23T22:21:52.166290+00:00",
+    "hostname": "DESKTOP-NBQUT6O",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "cpu_count": 24,
+    "python": "3.12.10",
+    "commit": {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "f7c9b573a7ca92121667308f156127087b0b566e",
+      "stderr": ""
+    },
+    "image_commit": "no_registrado",
+    "nvidia": {
+      "command": [
+        "nvidia-smi",
+        "--query-gpu=name,uuid,memory.total,driver_version",
+        "--format=csv"
+      ],
+      "returncode": 0,
+      "stdout": "name, uuid, memory.total [MiB], driver_version\nNVIDIA GeForce RTX 3070, GPU-a0cce0d4-1537-b457-36e4-442d183eb5e4, 8192 MiB, 581.95",
+      "stderr": ""
+    },
+    "nvcc": {
+      "command": [
+        "nvcc",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:24:01_Pacific_Daylight_Time_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0",
+      "stderr": ""
+    },
+    "pip_freeze": {
+      "command": [
+        "C:\\Users\\Oficina\\Desktop\\practicas-convolucion-imagenes-alta-resolucion-computacion-paralela\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "returncode": 0,
+      "stdout": "certifi==2026.11.20\nchardet==7.7.0\ncharset-normalizer==3.5.3\ncontourpy==1.3.3\ncycler==0.12.1\nfonttools==4.68.0\nidna==3.20\nkiwisolver==1.5.1\nmatplotlib==3.9.3\nnumpy==1.26.4\npackaging==26.3\npillow==11.1.0\npyparsing==3.3.3\npython-dateutil==4.0.0\nreportlab==4.2.5\nrequests==2.32.3\ntzdata==2026.6\nurllib3==2.8.0",
+      "stderr": ""
+    },
+    "ram": {
+      "command": [
+        "free",
+        "-b"
+      ],
+      "error": "[WinError 2] El sistema no puede encontrar el archivo especificado"
+    },
+    "lscpu": {
+      "command": [
+        "lscpu",
+        "--json"
+      ],
+      "error": "[WinError 2] El sistema no puede encontrar el archivo especificado"
+    },
+    "windows_hardware": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance Win32_ComputerSystem | Select-Object Model,TotalPhysicalMemory | ConvertTo-Json"
+      ],
+      "returncode": 0,
+      "stdout": "{\n    \"Model\":  \"OptiPlex 7000\",\n    \"TotalPhysicalMemory\":  34033348608\n}",
+      "stderr": ""
+    },
+    "windows_cpu": {
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores,NumberOfLogicalProcessors | ConvertTo-Json"
+      ],
+      "returncode": 0,
+      "stdout": "{\n    \"Name\":  \"12th Gen Intel(R) Core(TM) i9-12900K\",\n    \"NumberOfCores\":  16,\n    \"NumberOfLogicalProcessors\":  24\n}",
+      "stderr": ""
+    }
+  },
+  "server": {
+    "capacity": 2,
+    "code_commit": "f7c9b573a7ca92121667308f156127087b0b566e",
+    "diagnostic": null,
+    "gpu": {
+      "backend": "pycuda_real",
+      "cold_first_job": {
+        "allocation_ms": 2.0264060000272366,
+        "backend": "pycuda_real",
+        "blocks": 14400,
+        "compile_load_ms": 272.84417900000335,
+        "context_init_ms": 229.61845700001504,
+        "d2h_ms": 10.587183999973604,
+        "decode_prepare_ms": 43.67718999992576,
+        "encode_ms": 409.92785800006004,
+        "filter": "media",
+        "h2d_ms": 8.576742000059312,
+        "height": 1920,
+        "kernel_ms": 5.162079811096191,
+        "mask": 9,
+        "processing_ms": 492.9257989999769,
+        "queue_ms": 0.11986499998783984,
+        "scope": "Primera solicitud del proceso. Inicializacion separada; no incluye arranque Docker ni subida HTTP.",
+        "server_processing_ms": 503.71918799999094,
+        "sha256_float32": "a2916bc6b815300e9801cb13a4a9186d2f6182f1ba00d37e32ada9d153d3fd61",
+        "sha256_input": "f35c285e6fec9cd36c8a538d84ed4dfdca9d6b93bdfe50b6490c6f68f14fb715",
+        "threads": 256,
+        "total_ms": 25.616045999981907,
+        "unit": "ms",
+        "width": 1920,
+        "write_ms": 1.039905000084218
+      },
+      "compile_load_ms": 272.84417900000335,
+      "compiler_cache": "SourceModule cache por defecto; no se fuerza compilacion fria",
+      "compute_capability": [
+        8,
+        6
+      ],
+      "context_init_ms": 229.61845700001504,
+      "cuda_headers": [
+        12,
+        6,
+        0
+      ],
+      "driver_api": 13000,
+      "gpu": "NVIDIA GeForce RTX 3070",
+      "gpu_total_bytes": 8589410304,
+      "memory": "NumPy paginable, copias sincronas",
+      "pycuda": "2024.1"
+    },
+    "limits": {
+      "max_bytes": 41943040,
+      "max_pixels": 36000000,
+      "max_side": 8000
+    },
+    "status": "ready"
+  },
+  "url": "http://localhost:8000",
+  "network_note": "Mismo equipo, conexion loopback, sin otras cargas GPU",
+  "small_alternative": false
+}

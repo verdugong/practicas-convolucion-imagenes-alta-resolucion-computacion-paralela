@@ -1,0 +1,42 @@
+[
+  {
+    "test": "archivo_invalido",
+    "http_status": 422,
+    "response": {
+      "code": "entrada_invalida",
+      "message": "El contenido no es una imagen valida y segura.",
+      "request_id": "1bb8eb72b33c4ef38c0784878b38cc75",
+      "status": "error"
+    }
+  },
+  {
+    "test": "archivo_grande",
+    "http_status": 413,
+    "response": {
+      "code": "entrada_invalida",
+      "message": "Archivo supera el limite configurado.",
+      "request_id": "a04202a78922440bad99b25d096ac1ad",
+      "status": "error"
+    }
+  },
+  {
+    "test": "filtro_desconocido",
+    "http_status": 400,
+    "response": {
+      "code": "entrada_invalida",
+      "message": "Filtro permitido: media, nitidez o laplaciano.",
+      "request_id": "1a5f7f59aa92409d8df650e664efa362",
+      "status": "error"
+    }
+  },
+  {
+    "test": "mascara_no_permitida",
+    "http_status": 400,
+    "response": {
+      "code": "entrada_invalida",
+      "message": "Mascara incompatible con el filtro.",
+      "request_id": "86f75f1c5f4b418499f58e474134996a",
+      "status": "error"
+    }
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "context_init_ms": 129.29210000038438,
+  "compile_load_ms": 216.1709999991217,
+  "first_processing_ms": 282.87580000051094,
+  "scope": "Carga contexto + compilacion/carga y primera ejecucion registradas por separado; no incluye importaciones previas, arranque Python ni Docker. Cache puede existir."
+}

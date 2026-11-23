@@ -1,0 +1,20 @@
+{
+  "backend": "pycuda_real",
+  "gpu": "NVIDIA GeForce RTX 3070",
+  "gpu_total_bytes": 8589410304,
+  "compute_capability": [
+    8,
+    6
+  ],
+  "driver_api": 13000,
+  "cuda_headers": [
+    12,
+    9,
+    0
+  ],
+  "pycuda": "2026.1",
+  "context_init_ms": 129.29210000038438,
+  "compile_load_ms": 216.1709999991217,
+  "memory": "NumPy paginable, copias sincronas",
+  "compiler_cache": "SourceModule cache por defecto; no se fuerza compilacion fria"
+}
